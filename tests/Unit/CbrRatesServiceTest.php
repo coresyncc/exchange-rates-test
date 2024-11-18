@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Services\CbrRatesService;
 use Carbon\Carbon;
+use Psr\SimpleCache\CacheInterface;
 use SoapClient;
 use stdClass;
 use Tests\TestCase;
@@ -25,7 +26,11 @@ class CbrRatesServiceTest extends TestCase
                                                     <ValuteCursOnDate diffgr:id=\"ValuteCursOnDate15\" msdata:rowOrder=\"14\"><Vname>Евро</Vname>
                                                     <Vnom>1</Vnom><Vcurs>99.1919</Vcurs><Vcode>978</Vcode>
                                                     <VchCode>EUR</VchCode><VunitRate>99.1919</VunitRate></ValuteCursOnDate></ValuteData></diffgr:diffgram>";
-            $mock->shouldReceive('GetCursOnDate')->once()->andReturn($object);
+            $mock->shouldReceive('GetCursOnDate')->andReturn($object);
+        });
+        $this->mock(CacheInterface::class, function ($mock) {
+            $mock->shouldReceive('get')->andReturn(null);
+            $mock->shouldReceive('set')->andReturn(true);
         });
     }
 
