@@ -26,8 +26,6 @@ readonly class CbrRatesService implements RateFetcher
     {
         $soap = app(SoapClient::class);
 
-        dump(spl_object_id($soap));
-
         $response_xml = $soap->GetCursOnDate([
             'On_date' => $date
         ])->GetCursOnDateResult->any;
