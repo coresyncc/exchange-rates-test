@@ -11,8 +11,8 @@
         "ext-simplexml": "*",
         "ext-soap": "*",
         "laravel/framework": "^11.9",
-        "predis/predis": "^2.0",
-        "phpunit/phpunit": "^11.0.1"
+        "phpunit/phpunit": "^11.4",
+        "predis/predis": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
